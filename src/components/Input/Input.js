@@ -13,6 +13,9 @@ class Input extends Component {
           style={styles.input}
           onChangeText={(value) => this.props.onChange(value)}
           placeholder={`Enter your ${this.props.placeholder}`}
+          secureTextEntry={this.props.isSecured}
+          autoCorrect={false}
+          autoCapitalize="none"
         />
       </View>
     );
