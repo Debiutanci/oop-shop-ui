@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 class LoginSuccess extends Component {
   constructor(props) {
@@ -12,6 +12,9 @@ class LoginSuccess extends Component {
         <View>
           <Text>You logged successfully</Text>
         </View>
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <Text>Go back</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     );
   }

@@ -10,8 +10,8 @@ class LoginStart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'debiutant@test.pl',
+      password: 'debiutant1234',
     };
   }
 
@@ -27,6 +27,11 @@ class LoginStart extends Component {
     });
   };
 
+  submitHandler = async () => {
+    userLogin(this.state.email, this.state.password);
+    this.props.navigation.navigate('LoginSuccess');
+  };
+
   render() {
     return (
       <SafeAreaView>
@@ -36,7 +41,7 @@ class LoginStart extends Component {
           <Input placeholder="password" onChange={this.setPassword} isSecured />
           <Text>{this.state.email}</Text>
           <Text>{this.state.password}</Text>
-          <Btn text="Zaloguj" onPress={() => userLogin(this.state.email, this.state.password)} />
+          <Btn text="Zaloguj" onPress={this.submitHandler} />
         </View>
       </SafeAreaView>
     );
