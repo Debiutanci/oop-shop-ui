@@ -4,6 +4,8 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Btn from './Button/BaseButton';
 import Input from './Input/Input';
 
+import { userLogin } from '../store/auth/actions';
+
 class LoginStart extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ class LoginStart extends Component {
           <Input placeholder="password" onChange={this.setPassword} isSecured />
           <Text>{this.state.email}</Text>
           <Text>{this.state.password}</Text>
-          <Btn text="Zaloguj" />
+          <Btn text="Zaloguj" onPress={() => userLogin(this.state.email, this.state.password)} />
         </View>
       </SafeAreaView>
     );
