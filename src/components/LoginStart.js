@@ -5,6 +5,7 @@ import Btn from './Button/BaseButton';
 import Input from './Input/Input';
 
 import { userLogin } from '../store/auth/actions';
+import { AuthContext } from '../context/context';
 
 class LoginStart extends Component {
   constructor(props) {
@@ -27,23 +28,27 @@ class LoginStart extends Component {
     });
   };
 
-  submitHandler = async () => {
+  submitHandler = (context) => {
     userLogin(this.state.email, this.state.password);
-    this.props.navigation.navigate('LoginSuccess');
+    context.signIn();
   };
 
   render() {
     return (
-      <SafeAreaView>
-        <View style={styles.screen}>
-          <Text style={styles.name}>Home Screen</Text>
-          <Input placeholder="email" onChange={this.setEmail} />
-          <Input placeholder="password" onChange={this.setPassword} isSecured />
-          <Text>{this.state.email}</Text>
-          <Text>{this.state.password}</Text>
-          <Btn text="Zaloguj" onPress={this.submitHandler} />
-        </View>
-      </SafeAreaView>
+      <AuthContext.Consumer>
+        {(context) => (
+          <SafeAreaView>
+            <View style={styles.screen}>
+              <Text style={styles.name}>Home Screen</Text>
+              <Input placeholder="email" onChange={this.setEmail} />
+              <Input placeholder="password" onChange={this.setPassword} isSecured />
+              <Text>{this.state.email}</Text>
+              <Text>{this.state.password}</Text>
+              <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
+            </View>
+          </SafeAreaView>
+        )}
+      </AuthContext.Consumer>
     );
   }
 }

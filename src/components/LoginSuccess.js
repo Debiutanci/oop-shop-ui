@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { AuthContext } from '../context/context';
+
 class LoginSuccess extends Component {
   constructor(props) {
     super(props);
@@ -8,14 +10,18 @@ class LoginSuccess extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.screen}>
-        <View>
-          <Text>You logged successfully</Text>
-        </View>
-        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-          <Text>Go back</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
+      <AuthContext.Consumer>
+        {(context) => (
+          <SafeAreaView style={styles.screen}>
+            <View>
+              <Text>You logged successfully</Text>
+            </View>
+            <TouchableOpacity onPress={() => context.signOut()}>
+              <Text>Go back</Text>
+            </TouchableOpacity>
+          </SafeAreaView>
+        )}
+      </AuthContext.Consumer>
     );
   }
 }
