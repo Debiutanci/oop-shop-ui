@@ -16,6 +16,7 @@ function MyStack() {
     isLoading: true,
     userName: null,
     userToken: null,
+    userInfo: null,
   };
 
   const loginReducer = (prevState, action) => {
@@ -24,12 +25,14 @@ function MyStack() {
         return {
           ...prevState,
           userToken: action.token,
+          userInfo: action.userInfo,
           isLoading: false,
         };
       case 'LOGIN':
         return {
           ...prevState,
           userToken: action.token,
+          userInfo: action.userInfo,
           isLoading: false,
         };
       case 'LOGOUT':
@@ -37,6 +40,7 @@ function MyStack() {
           ...prevState,
           userName: null,
           userToken: null,
+          userInfo: null,
           isLoading: false,
         };
       case 'REGISTER':
@@ -59,14 +63,17 @@ function MyStack() {
     () => ({
       signIn: async (responseData) => {
         const userToken = responseData.jwt;
+        const userInfo = responseData.user;
         try {
           await AsyncStorage.setItem('userToken', userToken);
+          await AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
         } catch (error) {
           console.log(error);
         }
         dispatch({
           type: 'LOGIN',
           token: userToken,
+          userInfo,
         });
       },
       signOut: async () => {
