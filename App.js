@@ -6,8 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext } from './store/context/context';
 import LoginStart from './src/components/LoginStart';
-import LoginSuccess from './src/components/LoginSuccess';
 import LoginError from './src/components/LoginError';
+import Nav from './src/components/navigation/navigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -137,7 +137,7 @@ function MyStack() {
               <Stack.Screen name="LoginError" component={LoginError} />
             </>
           ) : (
-            <Stack.Screen name="LoginSuccess" component={LoginSuccess} />
+            <Stack.Screen name="LoginSuccess" component={Nav} />
           )}
         </Stack.Navigator>
       </NavigationContainer>
