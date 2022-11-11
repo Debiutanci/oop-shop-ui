@@ -88,7 +88,7 @@ function MyStack() {
         // setIsLoading(false);
       },
     }),
-    [],
+    []
   );
 
   useEffect(() => {

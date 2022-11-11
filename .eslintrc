@@ -80,6 +80,7 @@
       "ExportDeclaration": { "multiline": true, "minProperties": 3 }
     }],
     "import/no-named-default": "off",
-    "object-curly-new-line": "off"
+    "object-curly-new-line": "off",
+    "comma-dangle": "off"
   }
 }
