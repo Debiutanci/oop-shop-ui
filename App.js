@@ -57,16 +57,12 @@ function MyStack() {
 
   const authContext = useMemo(
     () => ({
-      signIn: async (email, password) => {
-        let userToken;
-        userToken = null;
-        if (email === 'debiutant@test.pl' && password === 'debiutant1234') {
-          userToken = 'qwerty';
-          try {
-            await AsyncStorage.setItem('userToken', userToken);
-          } catch (error) {
-            console.log(error);
-          }
+      signIn: async (responseData) => {
+        const userToken = responseData.jwt;
+        try {
+          await AsyncStorage.setItem('userToken', userToken);
+        } catch (error) {
+          console.log(error);
         }
         dispatch({
           type: 'LOGIN',
