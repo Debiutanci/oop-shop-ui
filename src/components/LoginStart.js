@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-
-import Btn from './Button/BaseButton';
-import Input from './Input/Input';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
+import Btn from './Button/BaseButton';
+import Input from './Input/Input';
+
+import ShopLogo from '../assets/logotype/shopLogotype.png';
 
 class LoginStart extends Component {
   constructor(props) {
@@ -36,16 +37,17 @@ class LoginStart extends Component {
     return (
       <AuthContext.Consumer>
         {(context) => (
-          <SafeAreaView>
+          <View style={styles.background}>
+            <Image source={ShopLogo} style={styles.image} />
             <View style={styles.screen}>
-              <Text style={styles.name}>Home Screen</Text>
+              <Text style={styles.title}>Logowanie</Text>
               <Input placeholder="email" onChange={this.setEmail} />
               <Input placeholder="password" onChange={this.setPassword} isSecured />
-              <Text>{this.state.email}</Text>
-              <Text>{this.state.password}</Text>
+              {/* <Text>{this.state.email}</Text> */}
+              {/* <Text>{this.state.password}</Text> */}
               <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
             </View>
-          </SafeAreaView>
+          </View>
         )}
       </AuthContext.Consumer>
     );
@@ -53,15 +55,28 @@ class LoginStart extends Component {
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    marginTop: 20,
+  background: {
+    flex: 1,
+    paddingTop: 100,
+    backgroundColor: '#7d52ff',
   },
-  name: {
-    fontSize: 26,
-    fontWeight: '400',
+  image: {
     alignSelf: 'center',
-    color: 'black',
-    marginVertical: 20,
+    marginBottom: 75,
+  },
+  screen: {
+    backgroundColor: '#f8f8f8',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    flex: 1,
+  },
+  title: {
+    color: '#571fff',
+    fontSize: 26,
+    fontWeight: '700',
+    marginHorizontal: 40,
+    marginTop: 35,
+    marginBottom: 10,
   },
 });
 
