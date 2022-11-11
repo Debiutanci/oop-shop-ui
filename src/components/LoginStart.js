@@ -30,7 +30,7 @@ class LoginStart extends Component {
 
   submitHandler = (context) => {
     userLogin(this.state.email, this.state.password);
-    context.signIn();
+    context.signIn(this.state.email, this.state.password).then();
   };
 
   render() {
