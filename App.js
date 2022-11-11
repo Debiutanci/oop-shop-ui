@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useReducer } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ActivityIndicator, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext } from './src/context/context';
 import LoginStart from './src/components/LoginStart';
@@ -56,18 +57,28 @@ function MyStack() {
 
   const authContext = useMemo(
     () => ({
-      signIn: (email, password) => {
+      signIn: async (email, password) => {
         let userToken;
         userToken = null;
         if (email === 'debiutant@test.pl' && password === 'debiutant1234') {
           userToken = 'qwerty';
+          try {
+            await AsyncStorage.setItem('userToken', userToken);
+          } catch (error) {
+            console.log(error);
+          }
         }
         dispatch({
           type: 'LOGIN',
           token: userToken,
         });
       },
-      signOut: () => {
+      signOut: async () => {
+        try {
+          await AsyncStorage.removeItem('userToken');
+        } catch (error) {
+          console.log(error);
+        }
         dispatch({
           type: 'LOGOUT',
         });
@@ -81,10 +92,16 @@ function MyStack() {
   );
 
   useEffect(() => {
-    setTimeout(() => {
+    setTimeout(async () => {
+      let userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch (error) {
+        console.log(error);
+      }
       dispatch({
         type: 'RETRIEVE_TOKEN',
-        token: 'ytrewq',
+        token: userToken,
       });
     }, 1000);
   }, []);
