@@ -1335,7 +1335,7 @@
 
 "@react-navigation/native@^6.0.13":
   version "6.0.13"
-  resolved "https://registry.npmjs.org/@react-navigation/native/-/native-6.0.13.tgz"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.13.tgz#ec504120e193ea6a7f24ffa765a1338be5a3160a"
   integrity sha512-CwaJcAGbhv3p3ECablxBkw8QBCGDWXqVRwQ4QbelajNW623m3sNTC9dOF6kjp8au6Rg9B5e0KmeuY0xWbPk79A==
   dependencies:
     "@react-navigation/core" "^6.4.0"
