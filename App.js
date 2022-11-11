@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ActivityIndicator, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { AuthContext } from './src/context/context';
+import { AuthContext } from './store/context/context';
 import LoginStart from './src/components/LoginStart';
 import LoginSuccess from './src/components/LoginSuccess';
 import LoginError from './src/components/LoginError';

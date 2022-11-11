@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { AuthContext } from '../context/context';
+import { AuthContext } from '../../store/context/context';
 
 class LoginSuccess extends Component {
   constructor(props) {

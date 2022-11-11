@@ -4,8 +4,8 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Btn from './Button/BaseButton';
 import Input from './Input/Input';
 
-import { userLogin } from '../store/auth/actions';
-import { AuthContext } from '../context/context';
+import { userLogin } from '../../store/auth/actions';
+import { AuthContext } from '../../store/context/context';
 
 class LoginStart extends Component {
   constructor(props) {
