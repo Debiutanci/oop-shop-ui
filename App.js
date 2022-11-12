@@ -48,7 +48,12 @@ function MyStack() {
           ...prevState,
           userName: action.id,
           userToken: action.token,
+          userInfo: action.userInfo,
           isLoading: false,
+        };
+      case 'GET_USER_INFO':
+        return {
+          ...prevState,
         };
       default:
         return {
