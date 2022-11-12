@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import LoginSuccess from '../LoginSuccess';
+import UserProfile from '../../screens/Profile';
 
 import CartIcon from '../../assets/tabNavigator/shopping-cart.png';
 import HomeIcon from '../../assets/tabNavigator/home.png';
@@ -70,7 +70,7 @@ function Nav() {
       />
       <Tab.Screen
         name="Profile"
-        component={LoginSuccess}
+        component={UserProfile}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image source={ProfileIcon} style={styles.tabIcon(focused)} />
