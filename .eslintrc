@@ -82,6 +82,7 @@
     "import/no-named-default": "off",
     "object-curly-new-line": "off",
     "comma-dangle": "off",
-    "react/no-unstable-nested-components": "off"
+    "react/no-unstable-nested-components": "off",
+    "react/no-deprecated": "off"
   }
 }
