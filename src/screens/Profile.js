@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../store/context/context';
 
 import UserIcon from '../components/UserProfile/UserProfileIcon';
@@ -8,6 +9,28 @@ import Btn from '../components/Button/BaseButton';
 class UserProfile extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userInfo: '',
+    };
+  }
+
+  getUser = async (setValue) => {
+    try {
+      const storedUserInfo = await AsyncStorage.getItem('userInfo');
+      setValue(JSON.parse(storedUserInfo));
+    } catch (error) {
+      // error reading value
+    }
+  };
+
+  setUserInfo = (value) => {
+    this.setState({
+      userInfo: value,
+    });
+  };
+
+  componentDidMount() {
+    this.getUser(this.setUserInfo).then();
   }
 
   render() {
@@ -15,17 +38,19 @@ class UserProfile extends Component {
       <AuthContext.Consumer>
         {(context) => (
           <View style={styles.box}>
-            <View
-              style={{
-                flexDirection: 'row',
-              }}
-            >
+            <View style={styles.wrapper}>
               <UserIcon />
               <View>
                 <Text style={styles.mainSections}>Dane użytkownika</Text>
                 <View style={styles.line} />
-                <Text>Imie:</Text>
-                <Text>Nazwisko:</Text>
+                <View style={styles.wrapper}>
+                  <Text style={styles.sections}>Imie:</Text>
+                  <Text>{this.state.userInfo.name}</Text>
+                </View>
+                <View style={styles.wrapper}>
+                  <Text style={styles.sections}>Nazwisko:</Text>
+                  <Text>{this.state.userInfo.surname}</Text>
+                </View>
               </View>
             </View>
             <Btn text="Wyloguj się" onPress={() => context.signOut()} />
@@ -37,6 +62,10 @@ class UserProfile extends Component {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
   box: {
     backgroundColor: '#f9f9f9',
     borderColor: '#c2c2c2',
@@ -55,7 +84,14 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#848484',
     width: '100%',
-    marginVertical: 5,
+    marginTop: 5,
+    marginBottom: 15,
+  },
+  sections: {
+    fontWeight: '500',
+    fontSize: 15,
+    color: '#848484',
+    marginRight: 20,
   },
 });
 
