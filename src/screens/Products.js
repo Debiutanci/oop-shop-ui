@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+
 import { AuthContext } from '../../store/context/context';
 import { getStoreProducts } from '../../store/auth/actions';
+import SingleItem from '../components/ItemList/SingleItem';
 
 class Products extends Component {
   constructor(props) {
@@ -27,7 +29,9 @@ class Products extends Component {
         {(context) => (
           <ScrollView>
             <View style={styles.box}>
-              <Text>{JSON.stringify(this.state.products)}</Text>
+              {this.state.products?.map((product) => (
+                <SingleItem products={product} />
+              ))}
             </View>
           </ScrollView>
         )}
@@ -41,6 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: 20,
   },
 });
 
