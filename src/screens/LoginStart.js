@@ -5,6 +5,7 @@ import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
 import Btn from '../components/Button/BaseButton';
 import Input from '../components/Input/Input';
+import ShowAndHide from '../components/ShowAndHideIcon/ShowAndHide';
 
 import ShopLogo from '../assets/logotype/shopLogotype.png';
 
@@ -15,6 +16,7 @@ class LoginStart extends Component {
       email: 'debiutant@test.pl',
       password: 'debiutant1234',
       isValidUser: true,
+      isSecured: true,
     };
   }
 
@@ -36,6 +38,12 @@ class LoginStart extends Component {
     });
   };
 
+  setIsSecured = (prevState) => {
+    this.setState({
+      isSecured: !prevState,
+    });
+  };
+
   submitHandler = (context) => {
     userLogin(this.state.email, this.state.password, context.signIn, this.setUserValidation);
   };
@@ -49,7 +57,13 @@ class LoginStart extends Component {
             <View style={styles.screen}>
               <Text style={styles.title}>Logowanie</Text>
               <Input placeholder="email" onChange={this.setEmail} />
-              <Input placeholder="password" onChange={this.setPassword} isSecured />
+              <Input
+                placeholder="password"
+                onChange={this.setPassword}
+                isSecured={this.state.isSecured}
+              >
+                <ShowAndHide setIsSecured={this.setIsSecured} isSecured={this.state.isSecured} />
+              </Input>
               {this.state.isValidUser ? null : (
                 <Text style={styles.errorMessage}>Niepoprawne dane logowania</Text>
               )}
