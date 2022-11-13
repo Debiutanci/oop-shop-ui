@@ -5,7 +5,7 @@ import { ActivityIndicator, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext } from './store/context/context';
-import LoginStart from './src/components/LoginStart';
+import LoginStart from './src/screens/LoginStart';
 import LoginError from './src/components/LoginError';
 import Nav from './src/components/navigation/navigation';
 

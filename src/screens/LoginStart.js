@@ -3,8 +3,9 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
-import Btn from './Button/BaseButton';
-import Input from './Input/Input';
+import Btn from '../components/Button/BaseButton';
+import Input from '../components/Input/Input';
+import ShowAndHide from '../components/ShowAndHideIcon/ShowAndHide';
 
 import ShopLogo from '../assets/logotype/shopLogotype.png';
 
@@ -14,6 +15,8 @@ class LoginStart extends Component {
     this.state = {
       email: 'debiutant@test.pl',
       password: 'debiutant1234',
+      isValidUser: true,
+      isSecured: true,
     };
   }
 
@@ -29,8 +32,20 @@ class LoginStart extends Component {
     });
   };
 
+  setUserValidation = (value) => {
+    this.setState({
+      isValidUser: value,
+    });
+  };
+
+  setIsSecured = (prevState) => {
+    this.setState({
+      isSecured: !prevState,
+    });
+  };
+
   submitHandler = (context) => {
-    userLogin(this.state.email, this.state.password, context.signIn);
+    userLogin(this.state.email, this.state.password, context.signIn, this.setUserValidation);
   };
 
   render() {
@@ -42,7 +57,16 @@ class LoginStart extends Component {
             <View style={styles.screen}>
               <Text style={styles.title}>Logowanie</Text>
               <Input placeholder="email" onChange={this.setEmail} />
-              <Input placeholder="password" onChange={this.setPassword} isSecured />
+              <Input
+                placeholder="password"
+                onChange={this.setPassword}
+                isSecured={this.state.isSecured}
+              >
+                <ShowAndHide setIsSecured={this.setIsSecured} isSecured={this.state.isSecured} />
+              </Input>
+              {this.state.isValidUser ? null : (
+                <Text style={styles.errorMessage}>Niepoprawne dane logowania</Text>
+              )}
               {/* <Text>{this.state.email}</Text> */}
               {/* <Text>{this.state.password}</Text> */}
               <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
@@ -77,6 +101,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
     marginTop: 35,
     marginBottom: 10,
+  },
+  errorMessage: {
+    color: '#d80000',
+    textAlign: 'center',
+    fontWeight: '700',
   },
 });
 
