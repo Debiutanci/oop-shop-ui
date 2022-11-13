@@ -3,8 +3,8 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
-import Btn from './Button/BaseButton';
-import Input from './Input/Input';
+import Btn from '../components/Button/BaseButton';
+import Input from '../components/Input/Input';
 
 import ShopLogo from '../assets/logotype/shopLogotype.png';
 
