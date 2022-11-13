@@ -14,6 +14,7 @@ class LoginStart extends Component {
     this.state = {
       email: 'debiutant@test.pl',
       password: 'debiutant1234',
+      isValidUser: true,
     };
   }
 
@@ -29,8 +30,14 @@ class LoginStart extends Component {
     });
   };
 
+  setUserValidation = (value) => {
+    this.setState({
+      isValidUser: value,
+    });
+  };
+
   submitHandler = (context) => {
-    userLogin(this.state.email, this.state.password, context.signIn);
+    userLogin(this.state.email, this.state.password, context.signIn, this.setUserValidation);
   };
 
   render() {
@@ -43,6 +50,9 @@ class LoginStart extends Component {
               <Text style={styles.title}>Logowanie</Text>
               <Input placeholder="email" onChange={this.setEmail} />
               <Input placeholder="password" onChange={this.setPassword} isSecured />
+              {this.state.isValidUser ? null : (
+                <Text style={styles.errorMessage}>Niepoprawne dane logowania</Text>
+              )}
               {/* <Text>{this.state.email}</Text> */}
               {/* <Text>{this.state.password}</Text> */}
               <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
@@ -77,6 +87,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
     marginTop: 35,
     marginBottom: 10,
+  },
+  errorMessage: {
+    color: '#d80000',
+    textAlign: 'center',
+    fontWeight: '700',
   },
 });
 
