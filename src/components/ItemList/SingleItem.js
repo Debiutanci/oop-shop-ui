@@ -14,7 +14,7 @@ class SingleItem extends Component {
         <Image source={ProductIcon} style={styles.icon} />
         <View style={styles.nameAndPrice}>
           <Text style={styles.itemName}>{this.props.products.name}</Text>
-          <Text>{this.props.products.price} zł</Text>
+          <Text style={styles.itemPrice}>{this.props.products.price} zł</Text>
         </View>
       </TouchableOpacity>
     );
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
     height: 100,
-    width: '90%',
+    width: '85%',
   },
   icon: {
     width: 60,
@@ -40,11 +40,17 @@ const styles = StyleSheet.create({
   },
   nameAndPrice: {
     alignItems: 'center',
+    justifyContent: 'space-between',
     flex: 1,
+    marginVertical: 10,
   },
   itemName: {
     fontWeight: '700',
     fontSize: 18,
+  },
+  itemPrice: {
+    alignSelf: 'flex-end',
+    marginHorizontal: 15,
   },
 });
 
