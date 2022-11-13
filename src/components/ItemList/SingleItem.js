@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import ProductIcon from '../../assets/icons/guitar.png';
+import GuitarIcon from '../../assets/icons/products/guitar.png';
+import PianoIcon from '../../assets/icons/products/piano.png';
+import HeadphonesIcon from '../../assets/icons/products/headphones.png';
 
 class SingleItem extends Component {
   constructor(props) {
     super(props);
   }
 
+  pickIcon = (category) => {
+    if (category === 'Gitary') {
+      return GuitarIcon;
+    }
+    if (category === 'Klawisze') {
+      return PianoIcon;
+    }
+    return HeadphonesIcon;
+  };
+
   render() {
     return (
       <TouchableOpacity style={styles.btnWrapper}>
-        <Image source={ProductIcon} style={styles.icon} />
+        <Image source={this.pickIcon(this.props.products.category)} style={styles.icon} />
         <View style={styles.nameAndPrice}>
           <Text style={styles.itemName}>{this.props.products.name}</Text>
           <Text style={styles.itemPrice}>{this.props.products.price} zł</Text>
