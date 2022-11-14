@@ -22,7 +22,10 @@ class SingleItem extends Component {
 
   render() {
     return (
-      <TouchableOpacity style={styles.btnWrapper}>
+      <TouchableOpacity
+        style={styles.btnWrapper}
+        onPress={() => this.props.navigation.navigate('ItemDetails')}
+      >
         <Image source={this.pickIcon(this.props.products.category)} style={styles.icon} />
         <View style={styles.nameAndPrice}>
           <Text style={styles.itemName}>{this.props.products.name}</Text>
