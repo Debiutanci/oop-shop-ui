@@ -30,7 +30,7 @@ class Products extends Component {
           <ScrollView>
             <View style={styles.box}>
               {this.state.products?.map((product) => (
-                <SingleItem products={product} />
+                <SingleItem products={product} key={product.identifier} />
               ))}
             </View>
           </ScrollView>
