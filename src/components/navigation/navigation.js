@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserProfile from '../../screens/Profile';
 import Products from '../../screens/Products';
+import ItemDetails from '../../screens/ItemDetails';
 
 import CartIcon from '../../assets/tabNavigator/shopping-cart.png';
 import HomeIcon from '../../assets/tabNavigator/home.png';
@@ -20,6 +22,21 @@ function SettingsScreen() {
     >
       <Text>There will be list of items chosen to buy</Text>
     </View>
+  );
+}
+
+const ShopStack = createNativeStackNavigator();
+
+function ShopStackScreen() {
+  return (
+    <ShopStack.Navigator
+      screenOptions={() => ({
+        headerShown: false,
+      })}
+    >
+      <ShopStack.Screen name="Products" component={Products} />
+      <ShopStack.Screen name="ItemDetails" component={ItemDetails} />
+    </ShopStack.Navigator>
   );
 }
 
@@ -43,7 +60,7 @@ function Nav() {
     >
       <Tab.Screen
         name="Items"
-        component={Products}
+        component={ShopStackScreen}
         options={{
           tabBarIcon: ({ focused }) => <Image source={HomeIcon} style={styles.tabIcon(focused)} />,
         }}

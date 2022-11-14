@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { AuthContext } from '../../store/context/context';
 import { getStoreProducts } from '../../store/auth/actions';
 import SingleItem from '../components/ItemList/SingleItem';
 
@@ -25,17 +24,17 @@ class Products extends Component {
 
   render() {
     return (
-      <AuthContext.Consumer>
-        {(context) => (
-          <ScrollView>
-            <View style={styles.box}>
-              {this.state.products?.map((product) => (
-                <SingleItem products={product} key={product.identifier} />
-              ))}
-            </View>
-          </ScrollView>
-        )}
-      </AuthContext.Consumer>
+      <ScrollView>
+        <View style={styles.box}>
+          {this.state.products?.map((product) => (
+            <SingleItem
+              products={product}
+              key={product.identifier}
+              navigation={this.props.navigation}
+            />
+          ))}
+        </View>
+      </ScrollView>
     );
   }
 }
