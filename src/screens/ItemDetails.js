@@ -52,13 +52,14 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    padding: 20,
+    paddingHorizontal: 20,
     marginTop: 200,
     flex: 1,
   },
   productName: {
     fontWeight: '700',
     fontSize: 26,
+    paddingTop: 20,
   },
   text: {
     letterSpacing: 1,
