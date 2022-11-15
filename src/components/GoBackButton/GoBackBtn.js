@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-import ArrowIcon from '../assets/icons/left-arrow.png';
+import ArrowIcon from '../../assets/icons/left-arrow.png';
 
 class GoBack extends Component {
   constructor(props) {
