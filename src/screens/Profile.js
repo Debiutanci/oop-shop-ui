@@ -5,6 +5,7 @@ import { AuthContext } from '../../store/context/context';
 
 import UserIcon from '../components/UserProfile/UserProfileIcon';
 import Btn from '../components/Button/BaseButton';
+import HorizontalLine from '../components/HorizontalLine/Line';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class UserProfile extends Component {
               <UserIcon />
               <View>
                 <Text style={styles.mainSections}>Dane użytkownika</Text>
-                <View style={styles.line} />
+                <HorizontalLine />
                 <View style={styles.wrapper}>
                   <Text style={styles.sections}>Imie:</Text>
                   <Text>{this.state.userInfo.name}</Text>
@@ -79,13 +80,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     color: '#848484',
-  },
-  line: {
-    height: 1,
-    backgroundColor: '#848484',
-    width: '100%',
-    marginTop: 5,
-    marginBottom: 15,
   },
   sections: {
     fontWeight: '500',
