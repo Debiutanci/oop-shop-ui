@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
-    marginTop: 60,
+    marginTop: 40,
     flex: 1,
   },
   iconWrapper: {

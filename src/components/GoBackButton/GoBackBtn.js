@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     tintColor: '#7d52ff',
   },
   btnWrapper: {
-    margin: 20,
+    marginTop: 20,
+    marginHorizontal: 20,
     shadowColor: '#171717',
     shadowOffset: {
       width: 0,
