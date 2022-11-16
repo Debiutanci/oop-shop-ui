@@ -21,8 +21,7 @@ class Products extends Component {
           <Text style={styles.productName}>{this.props.route.params.product.name}</Text>
           <HorizontalLine />
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Text>{this.props.route.params.product.price} zł</Text>
-            <HorizontalLine />
+            <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
             <SingleCategory category="Opis:">
               {this.props.route.params.product.description}
             </SingleCategory>
@@ -85,10 +84,12 @@ const styles = StyleSheet.create({
     fontSize: 26,
     paddingTop: 20,
   },
-  text: {
+  productPrice: {
+    marginBottom: 40,
     letterSpacing: 1,
-    color: '#767676',
-    marginLeft: 5,
+    color: '#3a3a3a',
+    fontWeight: '700',
+    fontSize: 22,
     flex: 1,
   },
 });
