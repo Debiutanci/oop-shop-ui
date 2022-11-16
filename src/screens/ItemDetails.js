@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import GoBackBtn from '../components/GoBackButton/GoBackBtn';
 import HorizontalLine from '../components/HorizontalLine/Line';
@@ -14,6 +14,9 @@ class Products extends Component {
     return (
       <View style={styles.background}>
         <GoBackBtn navigation={this.props.navigation} />
+        <View style={styles.iconWrapper}>
+          <Image source={this.props.route.params.image} style={styles.icon} />
+        </View>
         <View style={styles.screen}>
           <Text style={styles.productName}>{this.props.route.params.product.name}</Text>
           <HorizontalLine />
@@ -53,8 +56,29 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
-    marginTop: 200,
+    marginTop: 60,
     flex: 1,
+  },
+  iconWrapper: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 90,
+    backgroundColor: '#f1edff',
+    width: 180,
+    height: 180,
+    shadowColor: '#171717',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+  },
+  icon: {
+    width: 120,
+    height: 120,
+    margin: 10,
   },
   productName: {
     fontWeight: '700',
