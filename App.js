@@ -5,9 +5,9 @@ import { ActivityIndicator, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext } from './store/context/context';
-import LoginStart from './src/components/LoginStart';
-import LoginSuccess from './src/components/LoginSuccess';
+import LoginStart from './src/screens/LoginStart';
 import LoginError from './src/components/LoginError';
+import Nav from './src/components/navigation/navigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,7 +48,12 @@ function MyStack() {
           ...prevState,
           userName: action.id,
           userToken: action.token,
+          userInfo: action.userInfo,
           isLoading: false,
+        };
+      case 'GET_USER_INFO':
+        return {
+          ...prevState,
         };
       default:
         return {
@@ -137,7 +142,7 @@ function MyStack() {
               <Stack.Screen name="LoginError" component={LoginError} />
             </>
           ) : (
-            <Stack.Screen name="LoginSuccess" component={LoginSuccess} />
+            <Stack.Screen name="LoginSuccess" component={Nav} />
           )}
         </Stack.Navigator>
       </NavigationContainer>

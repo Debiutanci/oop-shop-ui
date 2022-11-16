@@ -81,6 +81,10 @@
     }],
     "import/no-named-default": "off",
     "object-curly-new-line": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "react/no-unstable-nested-components": "off",
+    "react/no-deprecated": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }
