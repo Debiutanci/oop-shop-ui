@@ -13,3 +13,12 @@ export function userLogin(userEmail, userPassword, signIn, setUserValidation) {
       console.error('There was an error!', error);
     });
 }
+
+export function getStoreProducts(setProducts) {
+  axios
+    .get('https://oop-shop-core.herokuapp.com/api/products/')
+    .then((response) => setProducts(response.data))
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+}
