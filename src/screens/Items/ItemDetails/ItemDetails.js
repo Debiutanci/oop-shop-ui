@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 
-import GoBackBtn from '../components/GoBackButton/GoBackBtn';
-import HorizontalLine from '../components/HorizontalLine/Line';
-import SingleCategory from '../components/ItemDetails/SingleCategory';
+import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
+import HorizontalLine from '../../../components/HorizontalLine/Line';
+import SingleCategory from '../../../components/ItemDetails/SingleCategory';
+import { styles } from './style';
 
 class Products extends Component {
   constructor(props) {
@@ -41,57 +42,5 @@ class Products extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    backgroundColor: '#f1edff',
-  },
-  screen: {
-    backgroundColor: '#ffffff',
-    borderColor: '#ddd4ff',
-    borderWidth: 2,
-    borderBottomColor: 'transparent',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    paddingHorizontal: 20,
-    marginTop: 40,
-    flex: 1,
-  },
-  iconWrapper: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 90,
-    backgroundColor: '#f1edff',
-    width: 180,
-    height: 180,
-    shadowColor: '#171717',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 20,
-  },
-  icon: {
-    width: 120,
-    height: 120,
-    margin: 10,
-  },
-  productName: {
-    fontWeight: '700',
-    fontSize: 26,
-    paddingTop: 20,
-  },
-  productPrice: {
-    marginBottom: 40,
-    letterSpacing: 1,
-    color: '#3a3a3a',
-    fontWeight: '700',
-    fontSize: 22,
-    flex: 1,
-  },
-});
 
 export default Products;

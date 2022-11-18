@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { getStoreProducts } from '../../store/auth/actions';
-import SingleItem from '../components/ItemList/SingleItem';
+import { getStoreProducts } from '../../../../store/auth/actions';
+import SingleItem from '../../../components/ItemList/SingleItem';
 
 class Products extends Component {
   constructor(props) {
