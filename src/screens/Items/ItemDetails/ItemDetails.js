@@ -23,17 +23,22 @@ class Products extends Component {
           <HorizontalLine />
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
-            <SingleCategory category="Opis:">
-              {this.props.route.params.product.description}
-            </SingleCategory>
-            <SingleCategory category="Kategoria:">
-              {this.props.route.params.product.category}
-            </SingleCategory>
-            <SingleCategory category="Producent:">
-              {this.props.route.params.product.manufacturer}
-            </SingleCategory>
-            <SingleCategory category="Kolor:">
-              {this.props.route.params.product.color.name}
+            <SingleCategory
+              category="Opis:"
+              description={this.props.route.params.product.description}
+            />
+            <SingleCategory
+              category="Kategoria:"
+              description={this.props.route.params.product.category}
+            />
+            <SingleCategory
+              category="Producent:"
+              description={this.props.route.params.product.manufacturer}
+            />
+            <SingleCategory
+              category="Kolor:"
+              description={this.props.route.params.product.color.name}
+            >
               <View style={styles.colorSquare(this.props.route.params.product.color.hex)} />
             </SingleCategory>
             {/* <Text>{JSON.stringify(this.props.route.params.product)}</Text> */}

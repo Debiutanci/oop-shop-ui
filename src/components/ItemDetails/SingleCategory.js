@@ -13,7 +13,8 @@ class SingleCategory extends Component {
       <>
         <View style={styles.categoryWrapper}>
           <Text style={styles.categoryName}>{this.props.category}</Text>
-          <Text style={styles.text}>{this.props.children}</Text>
+          <Text style={styles.text}>{this.props.description}</Text>
+          {this.props.children}
         </View>
         <HorizontalLine />
       </>
