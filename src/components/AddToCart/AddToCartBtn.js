@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import ShoppingCartIcon from '../../assets/icons/shopping-cart.png';
 
-function AddToCart() {
-  return (
-    <TouchableOpacity style={styles.btnWrapper}>
-      <Image source={ShoppingCartIcon} style={styles.icon} />
-      <Text style={styles.btnText}>Dodaj do koszyka</Text>
-    </TouchableOpacity>
-  );
+class AddToCart extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <TouchableOpacity style={styles.btnWrapper}>
+        <Image source={ShoppingCartIcon} style={styles.icon} />
+        <Text style={styles.btnText}>Dodaj do koszyka</Text>
+      </TouchableOpacity>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
