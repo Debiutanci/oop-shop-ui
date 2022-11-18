@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserProfile from '../../screens/Profile';
-import Products from '../../screens/Products';
-import ItemDetails from '../../screens/ItemDetails';
+import Products from '../../screens/Items/Products/Products';
+import ItemDetails from '../../screens/Items/ItemDetails/ItemDetails';
 
 import CartIcon from '../../assets/tabNavigator/shopping-cart.png';
 import HomeIcon from '../../assets/tabNavigator/home.png';
