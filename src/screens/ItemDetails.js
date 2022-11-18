@@ -32,7 +32,7 @@ class Products extends Component {
               {this.props.route.params.product.manufacturer}
             </SingleCategory>
             <SingleCategory category="Kolor:">
-              {this.props.route.params.product.color}
+              {this.props.route.params.product.color.name}
             </SingleCategory>
             {/* <Text>{JSON.stringify(this.props.route.params.product)}</Text> */}
           </ScrollView>
