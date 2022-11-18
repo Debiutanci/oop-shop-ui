@@ -46,13 +46,17 @@ export const productName = {
   paddingTop: 20,
 };
 
+export const priceAndBtn = {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 30,
+};
+
 export const productPrice = {
-  marginBottom: 40,
   letterSpacing: 1,
   color: '#3a3a3a',
   fontWeight: '700',
   fontSize: 22,
-  flex: 1,
 };
 
 export const colorSquare = (color) => ({
@@ -67,6 +71,7 @@ export const styles = StyleSheet.create({
   iconWrapper,
   icon,
   productName,
+  priceAndBtn,
   productPrice,
   colorSquare,
 });

@@ -4,6 +4,7 @@ import { Image, ScrollView, Text, View } from 'react-native';
 import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
 import HorizontalLine from '../../../components/HorizontalLine/Line';
 import SingleCategory from '../../../components/ItemDetails/SingleCategory';
+import AddToCartBtn from '../../../components/AddToCart/AddToCartBtn';
 import { styles } from './style';
 
 class Products extends Component {
@@ -22,7 +23,10 @@ class Products extends Component {
           <Text style={styles.productName}>{this.props.route.params.product.name}</Text>
           <HorizontalLine />
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
+            <View style={styles.priceAndBtn}>
+              <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
+              <AddToCartBtn />
+            </View>
             <SingleCategory
               category="Opis:"
               description={this.props.route.params.product.description}
