@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
@@ -53,6 +53,7 @@ class LoginStart extends Component {
       <AuthContext.Consumer>
         {(context) => (
           <View style={styles.background}>
+            <StatusBar backgroundColor="#7d52ff" barStyle="light" />
             <Image source={ShopLogo} style={styles.image} />
             <View style={styles.screen}>
               <Text style={styles.title}>Logowanie</Text>

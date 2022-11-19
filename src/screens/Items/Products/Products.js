@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
 import { getStoreProducts } from '../../../../store/auth/actions';
 import SingleItem from '../../../components/ItemList/SingleItem';
@@ -24,17 +24,20 @@ class Products extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.box}>
-          {this.state.products?.map((product) => (
-            <SingleItem
-              products={product}
-              key={product.identifier}
-              navigation={this.props.navigation}
-            />
-          ))}
-        </View>
-      </ScrollView>
+      <>
+        <StatusBar backgroundColor="#c9b7ff" barStyle="light" />
+        <ScrollView>
+          <View style={styles.box}>
+            {this.state.products?.map((product) => (
+              <SingleItem
+                products={product}
+                key={product.identifier}
+                navigation={this.props.navigation}
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </>
     );
   }
 }
