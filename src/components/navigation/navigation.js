@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -48,7 +48,7 @@ function Nav() {
       screenOptions={() => ({
         headerStyle: {
           backgroundColor: '#c9b7ff',
-          height: 120,
+          height: Platform.OS === 'ios' ? 120 : 80,
         },
         headerTitleStyle: {
           color: 'white',
@@ -56,6 +56,12 @@ function Nav() {
         },
         tabBarActiveTintColor: '#7d53ff',
         tabBarInactiveTintColor: '#b8b8b8',
+        tabBarStyle: {
+          height: Platform.OS === 'ios' ? 80 : 55,
+        },
+        tabBarLabelStyle: {
+          marginBottom: Platform.OS === 'ios' ? 0 : 5,
+        },
       })}
     >
       <Tab.Screen

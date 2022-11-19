@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image,
+  KeyboardAvoidingView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
@@ -53,23 +60,31 @@ class LoginStart extends Component {
       <AuthContext.Consumer>
         {(context) => (
           <View style={styles.background}>
+            <StatusBar backgroundColor="#7d52ff" barStyle="light-content" />
             <Image source={ShopLogo} style={styles.image} />
             <View style={styles.screen}>
-              <Text style={styles.title}>Logowanie</Text>
-              <Input placeholder="email" onChange={this.setEmail} />
-              <Input
-                placeholder="password"
-                onChange={this.setPassword}
-                isSecured={this.state.isSecured}
-              >
-                <ShowAndHide setIsSecured={this.setIsSecured} isSecured={this.state.isSecured} />
-              </Input>
-              {this.state.isValidUser ? null : (
-                <Text style={styles.errorMessage}>Niepoprawne dane logowania</Text>
-              )}
-              {/* <Text>{this.state.email}</Text> */}
-              {/* <Text>{this.state.password}</Text> */}
-              <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
+              <ScrollView>
+                <KeyboardAvoidingView behavior="position">
+                  <Text style={styles.title}>Logowanie</Text>
+                  <Input placeholder="email" onChange={this.setEmail} />
+                  <Input
+                    placeholder="password"
+                    onChange={this.setPassword}
+                    isSecured={this.state.isSecured}
+                  >
+                    <ShowAndHide
+                      setIsSecured={this.setIsSecured}
+                      isSecured={this.state.isSecured}
+                    />
+                  </Input>
+                  {this.state.isValidUser ? null : (
+                    <Text style={styles.errorMessage}>Niepoprawne dane logowania</Text>
+                  )}
+                  {/* <Text>{this.state.email}</Text> */}
+                  {/* <Text>{this.state.password}</Text> */}
+                  <Btn text="Zaloguj" onPress={() => this.submitHandler(context)} />
+                </KeyboardAvoidingView>
+              </ScrollView>
             </View>
           </View>
         )}
