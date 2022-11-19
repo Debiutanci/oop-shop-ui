@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
 import HorizontalLine from '../../../components/HorizontalLine/Line';
 import SingleCategory from '../../../components/ItemDetails/SingleCategory';
 import AddToCartBtn from '../../../components/AddToCart/AddToCartBtn';
+import { addToCart } from '../../../../store/auth/actions';
 import { styles } from './style';
 
 class Products extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      token: null,
+    };
+  }
+
+  setToken = (value) => {
+    this.setState({
+      token: value,
+    });
+    console.log('token:', value);
+  };
+
+  getToken = async (setValue) => {
+    try {
+      const storedUserToken = await AsyncStorage.getItem('userToken');
+      setValue(storedUserToken);
+    } catch (error) {
+      // error reading value
+    }
+  };
+
+  componentDidMount() {
+    this.getToken(this.setToken).then();
+    console.log('componentDidMount');
   }
 
   render() {
@@ -25,7 +51,9 @@ class Products extends Component {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.priceAndBtn}>
               <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
-              <AddToCartBtn />
+              <AddToCartBtn
+                onPress={() => addToCart(this.state.token, 1, this.props.route.params.identifier)}
+              />
             </View>
             <SingleCategory
               category="Opis:"

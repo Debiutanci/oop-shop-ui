@@ -10,7 +10,7 @@ class AddToCart extends Component {
 
   render() {
     return (
-      <TouchableOpacity style={styles.btnWrapper}>
+      <TouchableOpacity style={styles.btnWrapper} onPress={this.props.onPress}>
         <Image source={ShoppingCartIcon} style={styles.icon} />
         <Text style={styles.btnText}>Dodaj do koszyka</Text>
       </TouchableOpacity>
