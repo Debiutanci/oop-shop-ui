@@ -56,6 +56,12 @@ function Nav() {
         },
         tabBarActiveTintColor: '#7d53ff',
         tabBarInactiveTintColor: '#b8b8b8',
+        tabBarStyle: {
+          height: Platform.OS === 'ios' ? 80 : 55,
+        },
+        tabBarLabelStyle: {
+          marginBottom: Platform.OS === 'ios' ? 0 : 5,
+        },
       })}
     >
       <Tab.Screen
