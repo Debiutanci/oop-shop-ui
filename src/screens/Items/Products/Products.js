@@ -25,7 +25,7 @@ class Products extends Component {
   render() {
     return (
       <>
-        <StatusBar backgroundColor="#c9b7ff" barStyle="light" />
+        <StatusBar backgroundColor="#c9b7ff" barStyle="light-content" />
         <ScrollView>
           <View style={styles.box}>
             {this.state.products?.map((product) => (

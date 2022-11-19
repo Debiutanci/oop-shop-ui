@@ -53,7 +53,7 @@ class LoginStart extends Component {
       <AuthContext.Consumer>
         {(context) => (
           <View style={styles.background}>
-            <StatusBar backgroundColor="#7d52ff" barStyle="light" />
+            <StatusBar backgroundColor="#7d52ff" barStyle="light-content" />
             <Image source={ShopLogo} style={styles.image} />
             <View style={styles.screen}>
               <Text style={styles.title}>Logowanie</Text>
