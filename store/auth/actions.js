@@ -1,9 +1,17 @@
 import axios from 'axios';
+import { SentryConnector } from '../../src/oop/classes'
+import { SentryClient } from '../../src/oop/classes'
 
-export function userLogin(userEmail, userPassword, signIn, setUserValidation) {
+const sentry_client = new SentryClient("@!$#%GF134fdf1q341dsf143~!#")
+const sc = new SentryConnector(
+  endpoint='https://some-sentry-endpoint/12312541/',
+  client=sentry_client
+)
+
+export function userLogin(user, signIn, setUserValidation) {
   const payload = {
-    email: userEmail,
-    password: userPassword,
+    email: user.email,
+    password: user.password,
   };
   axios
     .post('https://oop-shop-core.herokuapp.com/auth/users/login/', payload)
@@ -20,5 +28,6 @@ export function getStoreProducts(setProducts) {
     .then((response) => setProducts(response.data))
     .catch((error) => {
       console.error('There was an error!', error);
+      sc.api_error(error);
     });
 }
