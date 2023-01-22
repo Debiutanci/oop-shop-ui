@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { SentryConnector } from '../../src/oop/classes'
-import { SentryClient } from '../../src/oop/classes'
+import { SentryConnector, SentryClient } from '../../src/oop/classes';
 
-const sentry_client = new SentryClient("@!$#%GF134fdf1q341dsf143~!#")
+const sentry_client = new SentryClient('@!$#%GF134fdf1q341dsf143~!#');
 const sc = new SentryConnector(
-  endpoint='https://some-sentry-endpoint/12312541/',
-  client=sentry_client
-)
+  (endpoint = 'https://some-sentry-endpoint/12312541/'),
+  (client = sentry_client)
+);
 
 export function userLogin(user, signIn, setUserValidation) {
   const payload = {
@@ -43,5 +42,17 @@ export function addToCart(token, quantity = 1, itemKey) {
     .catch((error) => {
       console.error('There was an error!', error);
       // console.log(itemKey);
+    });
+}
+
+export function getItemsFromCart(setItems) {
+  const payload = {
+    user: '1',
+  };
+  axios
+    .post('https://oop-shop-core.herokuapp.com/api/carts/my-cart/', payload)
+    .then((response) => setItems(response.data.cart.cart_products))
+    .catch((error) => {
+      console.error('There was an error!', error);
     });
 }
