@@ -30,6 +30,7 @@ export const iconWrapper = {
     width: 0,
     height: 0,
   },
+  elevation: 12,
   shadowOpacity: 0.1,
   shadowRadius: 20,
 };
