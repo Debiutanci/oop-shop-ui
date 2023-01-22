@@ -62,3 +62,15 @@ export function addToCart(token, quantity = 1, itemKey) {
       // console.log(itemKey);
     });
 }
+
+export function getItemsFromCart(setItems) {
+  const payload = {
+    user: '1',
+  };
+  axios
+    .post('https://oop-shop-core.herokuapp.com/api/carts/my-cart/', payload)
+    .then((response) => setItems(response.data.cart.cart_products))
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+}
