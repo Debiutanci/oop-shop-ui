@@ -31,3 +31,17 @@ export function getStoreProducts(setProducts) {
       sc.api_error(error);
     });
 }
+
+export function addToCart(token, quantity = 1, itemKey) {
+  const payload = {
+    user: '1',
+    quantity,
+  };
+  axios
+    .post(`https://oop-shop-core.herokuapp.com/api/products/${itemKey}/add-to-cart/`, payload)
+    .then((response) => console.log(response))
+    .catch((error) => {
+      console.error('There was an error!', error);
+      // console.log(itemKey);
+    });
+}

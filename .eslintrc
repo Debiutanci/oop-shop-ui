@@ -85,6 +85,7 @@
     "react/no-unstable-nested-components": "off",
     "react/no-deprecated": "off",
     "react/jsx-one-expression-per-line": "off",
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "default-param-last": "off"
   }
 }

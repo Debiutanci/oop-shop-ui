@@ -46,19 +46,29 @@ export const productName = {
   paddingTop: 20,
 };
 
+export const priceAndBtn = {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 30,
+};
+
 export const productPrice = {
-  marginBottom: 40,
   letterSpacing: 1,
   color: '#3a3a3a',
   fontWeight: '700',
   fontSize: 22,
-  flex: 1,
+};
+
+export const scrollPadding = {
+  marginTop: -15,
+  paddingTop: 15,
 };
 
 export const colorSquare = (color) => ({
   backgroundColor: color,
   width: 12,
   height: 12,
+  bottom: -2,
 });
 
 export const styles = StyleSheet.create({
@@ -67,6 +77,8 @@ export const styles = StyleSheet.create({
   iconWrapper,
   icon,
   productName,
+  priceAndBtn,
   productPrice,
+  scrollPadding,
   colorSquare,
 });
