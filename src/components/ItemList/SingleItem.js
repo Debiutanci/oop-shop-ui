@@ -5,20 +5,32 @@ import GuitarIcon from '../../assets/icons/products/guitar.png';
 import PianoIcon from '../../assets/icons/products/piano.png';
 import HeadphonesIcon from '../../assets/icons/products/headphones.png';
 
-class SingleItem extends Component {
-  constructor(props) {
-    super(props);
+class CategoryIconPicker {
+  constructor() {
+    this.__guitar_icon = GuitarIcon;
+    this.__piano_icon = PianoIcon;
+    this.__headphones_icon = HeadphonesIcon;
   }
 
   pickIcon = (category) => {
-    if (category === 'Gitary') {
-      return GuitarIcon;
+    switch (category) {
+      case 'Gitary':
+        return this.__guitar_icon;
+      case 'Klawisze':
+        return this.__piano_icon;
+      case 'Akcesoria':
+        return this.__headphones_icon;
+      default:
+        return null;
     }
-    if (category === 'Klawisze') {
-      return PianoIcon;
-    }
-    return HeadphonesIcon;
   };
+}
+
+class SingleItem extends Component {
+  constructor(props) {
+    super(props);
+    this.iconPicker = new CategoryIconPicker();
+  }
 
   render() {
     return (
@@ -27,10 +39,13 @@ class SingleItem extends Component {
         onPress={({ route, navigation }) =>
           this.props.navigation.navigate('ItemDetails', {
             product: this.props.products,
-            image: this.pickIcon(this.props.products.category),
+            image: this.iconPicker.pickIcon(this.props.products.category),
           })}
       >
-        <Image source={this.pickIcon(this.props.products.category)} style={styles.icon} />
+        <Image
+          source={this.iconPicker.pickIcon(this.props.products.category)}
+          style={styles.icon}
+        />
         <View style={styles.nameAndPrice}>
           <Text style={styles.itemName}>{this.props.products.name}</Text>
           <Text style={styles.itemPrice}>{this.props.products.price} zł</Text>

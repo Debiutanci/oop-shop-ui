@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
-import Toast from 'react-native-simple-toast';
+// import Toast from 'react-native-simple-toast';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
@@ -35,7 +35,7 @@ class Products extends Component {
 
   handleAddToCart = () => {
     addToCart(this.state.token, 1, this.props.route.params.product.identifier);
-    Toast.show('Dodano!', Toast.SHORT);
+    // Toast.show('Dodano!', Toast.SHORT);
   };
 
   componentDidMount() {
@@ -73,7 +73,7 @@ class Products extends Component {
               category="Kolor:"
               description={this.props.route.params.product.color.name}
             >
-              <View style={styles.colorSquare(this.props.route.params.product.color.hex)} />
+              <View style={styles.colorSquare(this.props.route.params.product.get_color())} />
             </SingleCategory>
             {/* <Text>{JSON.stringify(this.props.route.params.product)}</Text> */}
           </ScrollView>
