@@ -5,6 +5,10 @@ class AbstractOopModel {
     this._identifier = identifier;
   }
 
+  get identifier() {
+    return this._identifier;
+  }
+
   inside_log() {
     console.log();
   }
