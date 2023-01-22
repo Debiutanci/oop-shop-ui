@@ -21,7 +21,6 @@ class Products extends Component {
     this.setState({
       token: value,
     });
-    console.log('token:', value);
   };
 
   getToken = async (setValue) => {
@@ -33,9 +32,12 @@ class Products extends Component {
     }
   };
 
+  handleAddToCart = () => {
+    addToCart(this.state.token, 1, this.props.route.params.product.identifier);
+  };
+
   componentDidMount() {
     this.getToken(this.setToken).then();
-    console.log('componentDidMount');
   }
 
   render() {
@@ -51,9 +53,7 @@ class Products extends Component {
           <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollPadding}>
             <View style={styles.priceAndBtn}>
               <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
-              <AddToCartBtn
-                onPress={() => addToCart(this.state.token, 1, this.props.route.params.identifier)}
-              />
+              <AddToCartBtn onPress={this.handleAddToCart} />
             </View>
             <SingleCategory
               category="Opis:"

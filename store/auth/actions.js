@@ -25,7 +25,7 @@ export function getStoreProducts(setProducts) {
 
 export function addToCart(token, quantity = 1, itemKey) {
   const payload = {
-    user: token,
+    user: '1',
     quantity,
   };
   axios
@@ -33,5 +33,6 @@ export function addToCart(token, quantity = 1, itemKey) {
     .then((response) => console.log(response))
     .catch((error) => {
       console.error('There was an error!', error);
+      // console.log(itemKey);
     });
 }
