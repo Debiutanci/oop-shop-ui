@@ -64,6 +64,7 @@ class UserProfile extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 5,
   },
