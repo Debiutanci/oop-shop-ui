@@ -59,6 +59,11 @@ export const productPrice = {
   fontSize: 22,
 };
 
+export const scrollPadding = {
+  marginTop: -15,
+  paddingTop: 15,
+};
+
 export const colorSquare = (color) => ({
   backgroundColor: color,
   width: 12,
@@ -74,5 +79,6 @@ export const styles = StyleSheet.create({
   productName,
   priceAndBtn,
   productPrice,
+  scrollPadding,
   colorSquare,
 });

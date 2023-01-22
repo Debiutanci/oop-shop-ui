@@ -48,7 +48,7 @@ class Products extends Component {
         <View style={styles.screen}>
           <Text style={styles.productName}>{this.props.route.params.product.name}</Text>
           <HorizontalLine />
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollPadding}>
             <View style={styles.priceAndBtn}>
               <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
               <AddToCartBtn
