@@ -5,25 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import UserProfile from '../../screens/Profile';
 import Products from '../../screens/Items/Products/Products';
+import Cart from '../../screens/Cart/Cart';
 import ItemDetails from '../../screens/Items/ItemDetails/ItemDetails';
 
 import CartIcon from '../../assets/tabNavigator/shopping-cart.png';
 import HomeIcon from '../../assets/tabNavigator/home.png';
 import ProfileIcon from '../../assets/tabNavigator/user.png';
-
-function SettingsScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>There will be list of items chosen to buy</Text>
-    </View>
-  );
-}
 
 const ShopStack = createNativeStackNavigator();
 
@@ -73,7 +60,7 @@ function Nav() {
       />
       <Tab.Screen
         name="Cart"
-        component={SettingsScreen}
+        component={Cart}
         options={{
           tabBarIcon: ({ focused }) => <Image source={CartIcon} style={styles.tabIcon(focused)} />,
         }}
