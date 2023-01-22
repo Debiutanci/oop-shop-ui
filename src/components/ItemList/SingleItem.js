@@ -12,18 +12,18 @@ class CategoryIconPicker {
     this.__headphones_icon = HeadphonesIcon;
   }
 
-  pickIcon(category) {
+  pickIcon = (category) => {
     switch (category) {
-      case "Gitary":
+      case 'Gitary':
         return this.__guitar_icon;
-      case "Klawisze":
+      case 'Klawisze':
         return this.__piano_icon;
-      case "Akcesoria":
+      case 'Akcesoria':
         return this.__headphones_icon;
       default:
-        break;
+        return null;
     }
-  }
+  };
 }
 
 class SingleItem extends Component {
@@ -42,7 +42,10 @@ class SingleItem extends Component {
             image: this.pickIcon(this.props.products.category),
           })}
       >
-        <Image source={this.iconPicker.pickIcon(this.props.products.category)} style={styles.icon} />
+        <Image
+          source={this.iconPicker.pickIcon(this.props.products.category)}
+          style={styles.icon}
+        />
         <View style={styles.nameAndPrice}>
           <Text style={styles.itemName}>{this.props.products.name}</Text>
           <Text style={styles.itemPrice}>{this.props.products.price} zł</Text>

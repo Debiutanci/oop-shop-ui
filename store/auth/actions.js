@@ -1,15 +1,11 @@
 import axios from 'axios';
-import { SentryConnector } from '../../src/oop/classes'
-import { SentryClient } from '../../src/oop/classes'
-import { Product } from '../../src/oop/classes'
-import { Color } from '../../src/oop/classes'
+import { SentryConnector, SentryClient, Product, Color } from '../../src/oop/classes';
 
-
-const sentry_client = new SentryClient("@!$#%GF134fdf1q341dsf143~!#")
+const sentry_client = new SentryClient('@!$#%GF134fdf1q341dsf143~!#');
 const sc = new SentryConnector(
-  endpoint='https://some-sentry-endpoint/12312541/',
-  client=sentry_client
-)
+  (endpoint = 'https://some-sentry-endpoint/12312541/'),
+  (client = sentry_client)
+);
 
 export function userLogin(user, signIn, setUserValidation) {
   const payload = {
@@ -26,9 +22,9 @@ export function userLogin(user, signIn, setUserValidation) {
 }
 
 function serialize_products(data) {
-  const products = Array()
-  data.forEach(product => {
-    products.push(Product(
+  const products = Array();
+  data.forEach((product) => {
+    const p = new Product(
       product.identifier,
       product.name,
       product.description,
@@ -37,7 +33,8 @@ function serialize_products(data) {
       product.category,
       product.manufacturer,
       product.collection
-    ))
+    );
+    products.push(p);
   });
   return products;
 }
