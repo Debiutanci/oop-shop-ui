@@ -39,7 +39,7 @@ class SingleItem extends Component {
         onPress={({ route, navigation }) =>
           this.props.navigation.navigate('ItemDetails', {
             product: this.props.products,
-            image: this.pickIcon(this.props.products.category),
+            image: this.iconPicker.pickIcon(this.props.products.category),
           })}
       >
         <Image
