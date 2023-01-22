@@ -8,27 +8,29 @@ import Input from '../components/Input/Input';
 import ShowAndHide from '../components/ShowAndHideIcon/ShowAndHide';
 
 import ShopLogo from '../assets/logotype/shopLogotype.png';
+import { User } from '../oop/classes';
 
 class LoginStart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'debiutant@test.pl',
-      password: 'debiutant1234',
+      user: new User(email='debiutant@test.pl', password='debiutant1234'),
       isValidUser: true,
       isSecured: true,
     };
   }
 
   setEmail = (value) => {
+    const new_user = new User(email=value, password=this.user.password);
     this.setState({
-      email: value,
+      user: new_user
     });
   };
 
   setPassword = (value) => {
+    const new_user = new User(email=this.user.email, password=value);
     this.setState({
-      password: value,
+      user: new_user
     });
   };
 
@@ -45,7 +47,7 @@ class LoginStart extends Component {
   };
 
   submitHandler = (context) => {
-    userLogin(this.state.email, this.state.password, context.signIn, this.setUserValidation);
+    userLogin(this.state.user, context.signIn, this.setUserValidation);
   };
 
   render() {
