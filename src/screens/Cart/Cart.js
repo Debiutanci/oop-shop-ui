@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { getItemsFromCart } from '../../../store/auth/actions';
-import CartItem from '../Items/ItemDetails/CartItem';
+import CartItem from './CartItem';
 
 class UserProfile extends Component {
   constructor(props) {
