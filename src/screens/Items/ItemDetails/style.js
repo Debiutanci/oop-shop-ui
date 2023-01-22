@@ -63,6 +63,7 @@ export const colorSquare = (color) => ({
   backgroundColor: color,
   width: 12,
   height: 12,
+  bottom: -2,
 });
 
 export const styles = StyleSheet.create({
