@@ -73,7 +73,7 @@ class Products extends Component {
               category="Kolor:"
               description={this.props.route.params.product.color.name}
             >
-              <View style={styles.colorSquare(this.props.route.params.product.color.hex)} />
+              <View style={styles.colorSquare(this.props.route.params.product.get_color())} />
             </SingleCategory>
             {/* <Text>{JSON.stringify(this.props.route.params.product)}</Text> */}
           </ScrollView>
