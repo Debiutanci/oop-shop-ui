@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image,
+import {Image,
   KeyboardAvoidingView,
   ScrollView,
   StatusBar,
@@ -21,23 +21,31 @@ class LoginStart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: new User(email='debiutant@test.pl', password='debiutant1234'),
+      user: new User('debiutant@test.pl', 'debiutant1234'),
       isValidUser: true,
       isSecured: true,
     };
   }
 
   setEmail = (value) => {
-    const new_user = new User(email=value, password=this.user.password);
+    let password = '';
+    if (this.user) {
+      password = this.user;
+    }
+    const new_user = new User(value, password);
     this.setState({
-      user: new_user
+      user: new_user,
     });
   };
 
   setPassword = (value) => {
-    const new_user = new User(email=this.user.email, password=value);
+    let email = '';
+    if (this.user) {
+      email = this.user;
+    }
+    const new_user = new User(email, value);
     this.setState({
-      user: new_user
+      user: new_user,
     });
   };
 
