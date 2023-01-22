@@ -1,29 +1,44 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-import GuitarIcon from '../../../../assets/icons/products/guitar.png';
-import PianoIcon from '../../../../assets/icons/products/piano.png';
-import HeadphonesIcon from '../../../../assets/icons/products/headphones.png';
+import GuitarIcon from '../../../assets/icons/products/guitar.png';
+import PianoIcon from '../../../assets/icons/products/piano.png';
+import HeadphonesIcon from '../../../assets/icons/products/headphones.png';
+
+class CategoryIconPicker {
+  constructor() {
+    this.__guitar_icon = GuitarIcon;
+    this.__piano_icon = PianoIcon;
+    this.__headphones_icon = HeadphonesIcon;
+  }
+
+  pickIcon = (category) => {
+    switch (category) {
+      case 'Gitary':
+        return this.__guitar_icon;
+      case 'Klawisze':
+        return this.__piano_icon;
+      case 'Akcesoria':
+        return this.__headphones_icon;
+      default:
+        return null;
+    }
+  };
+}
 
 class CartItem extends Component {
   constructor(props) {
     super(props);
+    this.iconPicker = new CategoryIconPicker();
   }
-
-  pickIcon = (category) => {
-    if (category === 'Gitary') {
-      return GuitarIcon;
-    }
-    if (category === 'Klawisze') {
-      return PianoIcon;
-    }
-    return HeadphonesIcon;
-  };
 
   render() {
     return (
       <View style={styles.btnWrapper}>
-        <Image source={this.pickIcon(this.props.products.category)} style={styles.icon} />
+        <Image
+          source={this.iconPicker.pickIcon(this.props.products.category)}
+          style={styles.icon}
+        />
         <View style={styles.nameAndPrice}>
           <Text numberOfLines={1} style={styles.itemName}>
             {this.props.products.name}
