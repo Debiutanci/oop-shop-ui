@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { getItemsFromCart } from '../../../store/auth/actions';
+import { getItemsFromCart, makeAnOrder } from '../../../store/auth/actions';
 import CartItem from './CartItem';
 import MakeAnOrder from '../../components/Buttons/CartOrderBtn';
 
 import TrolleyIcon from '../../assets/icons/shopping-trolley.png';
 
-function CartContent(cart, products, refresh, makeAnOrder) {
+function CartContent(cart, products, refresh, order) {
   if (cart && cart.length) {
     return (
       <View>
@@ -20,7 +20,7 @@ function CartContent(cart, products, refresh, makeAnOrder) {
         ))}
         <View style={styles.buttonWrapper}>
           <View style={styles.orderButton}>
-            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" onPress={makeAnOrder} />
+            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" onPress={order} />
           </View>
         </View>
       </View>
@@ -68,9 +68,7 @@ class Cart extends Component {
   };
 
   handleMakeAnOrder = () => {
-    // console.log(this.state.userID);
-    // console.log(this.state.cartID);
-    //  todo
+    makeAnOrder(this.state.userID, this.state.cartID, this.handleGetItemsFromCart);
   };
 
   onRefresh = () => {
