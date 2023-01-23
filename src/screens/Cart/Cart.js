@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { getItemsFromCart } from '../../../store/auth/actions';
+import { getItemsFromCart, makeAnOrder } from '../../../store/auth/actions';
 import CartItem from './CartItem';
+import MakeAnOrder from '../../components/Buttons/CartOrderBtn';
 
-function CartContent(cart, products, refresh) {
+import TrolleyIcon from '../../assets/icons/shopping-trolley.png';
+
+function CartContent(cart, products, refresh, order) {
   if (cart && cart.length) {
     return (
       <View>
@@ -15,6 +18,11 @@ function CartContent(cart, products, refresh) {
             refresh={refresh}
           />
         ))}
+        <View style={styles.buttonWrapper}>
+          <View style={styles.orderButton}>
+            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" onPress={order} />
+          </View>
+        </View>
       </View>
     );
   }
@@ -26,11 +34,13 @@ function CartContent(cart, products, refresh) {
   );
 }
 
-class UserProfile extends Component {
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cartItems: null,
+      cartID: null,
+      userID: null,
       refreshing: false,
     };
   }
@@ -41,8 +51,24 @@ class UserProfile extends Component {
     });
   };
 
+  getCartID = (value) => {
+    this.setState({
+      cartID: value,
+    });
+  };
+
+  getUserID = (value) => {
+    this.setState({
+      userID: value,
+    });
+  };
+
   handleGetItemsFromCart = () => {
-    getItemsFromCart(this.getCartItems, this.handleGetItemsFromCart);
+    getItemsFromCart(this.getCartItems, this.getCartID, this.getUserID);
+  };
+
+  handleMakeAnOrder = () => {
+    makeAnOrder(this.state.userID, this.state.cartID, this.handleGetItemsFromCart);
   };
 
   onRefresh = () => {
@@ -69,7 +95,12 @@ class UserProfile extends Component {
           onRefresh={this.onRefresh}
           progressViewOffset={-50}
         />
-        {CartContent(this.state.cartItems, this.state.cartItems, this.handleGetItemsFromCart)}
+        {CartContent(
+          this.state.cartItems,
+          this.state.cartItems,
+          this.handleGetItemsFromCart,
+          this.handleMakeAnOrder
+        )}
       </ScrollView>
     );
   }
@@ -90,6 +121,15 @@ const styles = StyleSheet.create({
     padding: 5,
     flex: 1,
   },
+  orderButton: {
+    marginVertical: 10,
+    width: '50%',
+    padding: 5,
+  },
+  buttonWrapper: {
+    alignItems: 'flex-end',
+    flex: 1,
+  },
 });
 
-export default UserProfile;
+export default Cart;

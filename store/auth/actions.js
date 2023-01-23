@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SentryConnector, SentryClient, Product, Color } from '../../src/oop/classes';
+import { SentryConnector, SentryClient, Product } from '../../src/oop/classes';
 
 const sentry_client = new SentryClient('@!$#%GF134fdf1q341dsf143~!#');
 const sc = new SentryConnector(
@@ -63,7 +63,7 @@ export function addToCart(token, quantity = 1, itemKey) {
     });
 }
 
-export function getItemsFromCart(setItems) {
+export function getItemsFromCart(setItems, setCartID, setUserID) {
   const payload = {
     user: '1',
   };
@@ -71,6 +71,8 @@ export function getItemsFromCart(setItems) {
     .post('https://oop-shop-core.herokuapp.com/api/carts/my-cart/', payload)
     .then((response) => {
       setItems(response.data.cart.cart_products);
+      setCartID(response.data.cart.identifier);
+      setUserID(response.data.cart.user);
     })
     .catch((error) => {
       console.error('There was an error!', error);
@@ -83,6 +85,19 @@ export function removeFromCart(itemKey, refresh) {
   };
   axios
     .post(`https://oop-shop-core.herokuapp.com/api/products/${itemKey}/remove-from-cart/`, payload)
+    .then(() => refresh())
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+}
+
+export function makeAnOrder(userID, cartID, refresh) {
+  const payload = {
+    user: userID,
+    cart: cartID,
+  };
+  axios
+    .post('https://oop-shop-core.herokuapp.com/api/orders/', payload)
     .then(() => refresh())
     .catch((error) => {
       console.error('There was an error!', error);

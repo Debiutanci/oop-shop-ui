@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-function BaseButton({ text, onPress }) {
+function Index({ text, onPress }) {
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BaseButton;
+export default Index;

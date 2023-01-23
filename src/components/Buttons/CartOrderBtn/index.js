@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import ShoppingCartIcon from '../../assets/icons/shopping-cart.png';
-
-class AddToCart extends Component {
+class CartButton extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,8 +9,8 @@ class AddToCart extends Component {
   render() {
     return (
       <TouchableOpacity style={styles.btnWrapper} onPress={this.props.onPress}>
-        <Image source={ShoppingCartIcon} style={styles.icon} />
-        <Text style={styles.btnText}>Dodaj do koszyka</Text>
+        <Image source={this.props.image} style={styles.icon} />
+        <Text style={styles.btnText}>{this.props.title}</Text>
       </TouchableOpacity>
     );
   }
@@ -24,7 +22,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 20,
-    marginLeft: 40,
     height: 45,
     flex: 1,
   },
@@ -43,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddToCart;
+export default CartButton;

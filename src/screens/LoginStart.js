@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import {Image,
+import { Image,
   KeyboardAvoidingView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  View,
-} from 'react-native';
+  View,} from 'react-native';
 
 import { userLogin } from '../../store/auth/actions';
 import { AuthContext } from '../../store/context/context';
-import Btn from '../components/Button/BaseButton';
+import Btn from '../components/Buttons/LoginBtn';
 import Input from '../components/Input/Input';
 import ShowAndHide from '../components/ShowAndHideIcon/ShowAndHide';
 
