@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../store/context/context';
 
 import UserIcon from '../components/UserProfile/UserProfileIcon';
-import Btn from '../components/Button/BaseButton';
+import Btn from '../components/Buttons/LoginBtn';
 import HorizontalLine from '../components/HorizontalLine/Line';
 
 class UserProfile extends Component {
@@ -64,6 +64,7 @@ class UserProfile extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 5,
   },
