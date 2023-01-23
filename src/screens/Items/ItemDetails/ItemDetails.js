@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
 import HorizontalLine from '../../../components/HorizontalLine/Line';
 import SingleCategory from '../../../components/ItemDetails/SingleCategory';
-import AddToCart from '../../../components/AddToCart/AddToCartBtn';
+import AddToCart from '../../../components/Buttons/CartOrderBtn';
 import { addToCart } from '../../../../store/auth/actions';
 import { styles } from './style';
 
