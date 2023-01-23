@@ -63,7 +63,7 @@ export function addToCart(token, quantity = 1, itemKey) {
     });
 }
 
-export function getItemsFromCart(setItems) {
+export function getItemsFromCart(setItems, setCartID, setUserID) {
   const payload = {
     user: '1',
   };
@@ -71,6 +71,8 @@ export function getItemsFromCart(setItems) {
     .post('https://oop-shop-core.herokuapp.com/api/carts/my-cart/', payload)
     .then((response) => {
       setItems(response.data.cart.cart_products);
+      setCartID(response.data.cart.identifier);
+      setUserID(response.data.cart.user);
     })
     .catch((error) => {
       console.error('There was an error!', error);

@@ -6,7 +6,7 @@ import MakeAnOrder from '../../components/Buttons/CartOrderBtn';
 
 import TrolleyIcon from '../../assets/icons/shopping-trolley.png';
 
-function CartContent(cart, products, refresh) {
+function CartContent(cart, products, refresh, makeAnOrder) {
   if (cart && cart.length) {
     return (
       <View>
@@ -20,7 +20,7 @@ function CartContent(cart, products, refresh) {
         ))}
         <View style={styles.buttonWrapper}>
           <View style={styles.orderButton}>
-            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" />
+            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" onPress={makeAnOrder} />
           </View>
         </View>
       </View>
@@ -34,11 +34,13 @@ function CartContent(cart, products, refresh) {
   );
 }
 
-class UserProfile extends Component {
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cartItems: null,
+      cartID: null,
+      userID: null,
       refreshing: false,
     };
   }
@@ -49,8 +51,26 @@ class UserProfile extends Component {
     });
   };
 
+  getCartID = (value) => {
+    this.setState({
+      cartID: value,
+    });
+  };
+
+  getUserID = (value) => {
+    this.setState({
+      userID: value,
+    });
+  };
+
   handleGetItemsFromCart = () => {
-    getItemsFromCart(this.getCartItems, this.handleGetItemsFromCart);
+    getItemsFromCart(this.getCartItems, this.getCartID, this.getUserID);
+  };
+
+  handleMakeAnOrder = () => {
+    // console.log(this.state.userID);
+    // console.log(this.state.cartID);
+    //  todo
   };
 
   onRefresh = () => {
@@ -77,7 +97,12 @@ class UserProfile extends Component {
           onRefresh={this.onRefresh}
           progressViewOffset={-50}
         />
-        {CartContent(this.state.cartItems, this.state.cartItems, this.handleGetItemsFromCart)}
+        {CartContent(
+          this.state.cartItems,
+          this.state.cartItems,
+          this.handleGetItemsFromCart,
+          this.handleMakeAnOrder
+        )}
       </ScrollView>
     );
   }
@@ -109,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserProfile;
+export default Cart;
