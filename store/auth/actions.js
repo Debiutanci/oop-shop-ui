@@ -69,7 +69,21 @@ export function getItemsFromCart(setItems) {
   };
   axios
     .post('https://oop-shop-core.herokuapp.com/api/carts/my-cart/', payload)
-    .then((response) => setItems(response.data.cart.cart_products))
+    .then((response) => {
+      setItems(response.data.cart.cart_products);
+    })
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+}
+
+export function removeFromCart(itemKey, refresh) {
+  const payload = {
+    user: '1',
+  };
+  axios
+    .post(`https://oop-shop-core.herokuapp.com/api/products/${itemKey}/remove-from-cart/`, payload)
+    .then(() => refresh())
     .catch((error) => {
       console.error('There was an error!', error);
     });
