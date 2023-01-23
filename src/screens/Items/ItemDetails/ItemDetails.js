@@ -6,9 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import GoBackBtn from '../../../components/GoBackButton/GoBackBtn';
 import HorizontalLine from '../../../components/HorizontalLine/Line';
 import SingleCategory from '../../../components/ItemDetails/SingleCategory';
-import AddToCartBtn from '../../../components/AddToCart/AddToCartBtn';
+import AddToCart from '../../../components/AddToCart/AddToCartBtn';
 import { addToCart } from '../../../../store/auth/actions';
 import { styles } from './style';
+
+import ShoppingCartIcon from '../../../assets/icons/shopping-cart.png';
 
 class Products extends Component {
   constructor(props) {
@@ -55,7 +57,11 @@ class Products extends Component {
           <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollPadding}>
             <View style={styles.priceAndBtn}>
               <Text style={styles.productPrice}>{this.props.route.params.product.price} zł</Text>
-              <AddToCartBtn onPress={this.handleAddToCart} />
+              <AddToCart
+                image={ShoppingCartIcon}
+                title="Dodaj do koszyka"
+                onPress={this.handleAddToCart}
+              />
             </View>
             <SingleCategory
               category="Opis:"

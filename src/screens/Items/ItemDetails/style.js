@@ -54,6 +54,7 @@ export const priceAndBtn = {
 };
 
 export const productPrice = {
+  marginRight: 40,
   letterSpacing: 1,
   color: '#3a3a3a',
   fontWeight: '700',
