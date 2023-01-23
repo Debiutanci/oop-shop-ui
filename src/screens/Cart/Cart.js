@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { getItemsFromCart } from '../../../store/auth/actions';
 import CartItem from './CartItem';
 
@@ -18,7 +18,7 @@ class UserProfile extends Component {
   };
 
   handleGetItemsFromCart = () => {
-    getItemsFromCart(this.getCartItems);
+    getItemsFromCart(this.getCartItems, this.handleGetItemsFromCart);
   };
 
   componentDidMount() {
@@ -33,11 +33,9 @@ class UserProfile extends Component {
             products={product.product}
             key={product.identifier}
             quantity={product.quantity}
+            refresh={this.handleGetItemsFromCart}
           />
         ))}
-        <TouchableOpacity onPress={this.handleGetItemsFromCart}>
-          <Text style={styles.refreshText}>Dotknij, by odświeżyć</Text>
-        </TouchableOpacity>
       </ScrollView>
     );
   }

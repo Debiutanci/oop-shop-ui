@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import GuitarIcon from '../../../assets/icons/products/guitar.png';
 import PianoIcon from '../../../assets/icons/products/piano.png';
 import HeadphonesIcon from '../../../assets/icons/products/headphones.png';
+import BinIcon from '../../../assets/icons/bin.png';
+import { removeFromCart } from '../../../../store/auth/actions';
 
 class CategoryIconPicker {
   constructor() {
@@ -32,6 +34,10 @@ class CartItem extends Component {
     this.iconPicker = new CategoryIconPicker();
   }
 
+  handleRemoving = () => {
+    removeFromCart(this.props.products.identifier, this.props.refresh);
+  };
+
   render() {
     return (
       <View style={styles.btnWrapper}>
@@ -46,6 +52,11 @@ class CartItem extends Component {
           <View style={styles.wrapper}>
             <Text style={styles.itemDescription}>{this.props.products.price} zł</Text>
             <Text style={styles.itemDescription}>{this.props.quantity} szt.</Text>
+            <View>
+              <TouchableOpacity onPress={this.handleRemoving}>
+                <Image source={BinIcon} style={styles.trashIcon} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -70,6 +81,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     width: 60,
     height: 60,
+  },
+  trashIcon: {
+    resizeMode: 'contain',
+    width: 18,
+    height: 18,
+    tintColor: '#d80000',
   },
   nameAndPrice: {
     alignItems: 'center',
