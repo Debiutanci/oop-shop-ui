@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { getItemsFromCart } from '../../../store/auth/actions';
 import CartItem from './CartItem';
 
@@ -8,6 +8,7 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       cartItems: null,
+      refreshing: false,
     };
   }
 
@@ -21,6 +22,18 @@ class UserProfile extends Component {
     getItemsFromCart(this.getCartItems, this.handleGetItemsFromCart);
   };
 
+  onRefresh = () => {
+    this.setState({
+      refreshing: true,
+    });
+    this.handleGetItemsFromCart();
+    setTimeout(() => {
+      this.setState({
+        refreshing: false,
+      });
+    }, 800);
+  };
+
   componentDidMount() {
     this.handleGetItemsFromCart();
   }
@@ -28,6 +41,11 @@ class UserProfile extends Component {
   render() {
     return (
       <ScrollView style={styles.screenWrapper} contentContainerStyle={styles.screenAlignment}>
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this.onRefresh}
+          progressViewOffset={-50}
+        />
         {this.state.cartItems?.map((product) => (
           <CartItem
             products={product.product}
@@ -48,6 +66,7 @@ const styles = StyleSheet.create({
   },
   screenAlignment: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   refreshText: {
     padding: 5,
