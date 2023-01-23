@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getItemsFromCart } from '../../../store/auth/actions';
 import CartItem from './CartItem';
+import MakeAnOrder from '../../components/Buttons/CartOrderBtn';
+
+import TrolleyIcon from '../../assets/icons/shopping-trolley.png';
 
 function CartContent(cart, products, refresh) {
   if (cart && cart.length) {
@@ -15,6 +18,11 @@ function CartContent(cart, products, refresh) {
             refresh={refresh}
           />
         ))}
+        <View style={styles.buttonWrapper}>
+          <View style={styles.orderButton}>
+            <MakeAnOrder image={TrolleyIcon} title="Zamawiam" />
+          </View>
+        </View>
       </View>
     );
   }
@@ -88,6 +96,15 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 16,
     padding: 5,
+    flex: 1,
+  },
+  orderButton: {
+    marginVertical: 10,
+    width: '50%',
+    padding: 5,
+  },
+  buttonWrapper: {
+    alignItems: 'flex-end',
     flex: 1,
   },
 });
