@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
-import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getItemsFromCart } from '../../../store/auth/actions';
 import CartItem from './CartItem';
+
+function CartContent(cart, products, refresh) {
+  if (cart && cart.length) {
+    return (
+      <View>
+        {products?.map((product) => (
+          <CartItem
+            products={product.product}
+            key={product.identifier}
+            quantity={product.quantity}
+            refresh={refresh}
+          />
+        ))}
+      </View>
+    );
+  }
+  return (
+    <View style={styles.screenAlignment}>
+      <Text style={styles.refreshText}>Twój koszyk jest pusty :(</Text>
+      <Text style={styles.refreshText}>Dodaj wybrany produkt i odśwież koszyk</Text>
+    </View>
+  );
+}
 
 class UserProfile extends Component {
   constructor(props) {
@@ -46,14 +69,7 @@ class UserProfile extends Component {
           onRefresh={this.onRefresh}
           progressViewOffset={-50}
         />
-        {this.state.cartItems?.map((product) => (
-          <CartItem
-            products={product.product}
-            key={product.identifier}
-            quantity={product.quantity}
-            refresh={this.handleGetItemsFromCart}
-          />
-        ))}
+        {CartContent(this.state.cartItems, this.state.cartItems, this.handleGetItemsFromCart)}
       </ScrollView>
     );
   }
@@ -69,7 +85,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   refreshText: {
+    fontWeight: '400',
+    fontSize: 16,
     padding: 5,
+    flex: 1,
   },
 });
 
