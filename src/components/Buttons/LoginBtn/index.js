@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-function Index({ text, onPress }) {
-  return (
-    <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text style={styles.textStyle}>{text}</Text>
-      </TouchableOpacity>
-    </View>
-  );
+class LoginLogout extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={styles.wrapper}>
+        <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
+          <Text style={styles.textStyle}>{this.props.text}</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -33,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Index;
+export default LoginLogout;
