@@ -6,11 +6,9 @@ class AbstractOopModel {
   }
 
   get identifier() {
-    return this._identifier;
-  }
-
-  inside_log() {
-    console.log();
+    const str = "Identifier :"
+    const res = str.concat(' ', this._identifier)
+    return res;
   }
 }
 
@@ -135,6 +133,10 @@ export class Product extends AbstractOopModel {
 
   set collection(value) {
     this._collection = value;
+  }
+
+  get identifier() {
+    return this._identifier;
   }
 
   get_color = () => {
